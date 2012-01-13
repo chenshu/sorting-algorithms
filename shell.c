@@ -17,14 +17,11 @@ void shell_sort(int arr[], int cnt)
     {
         gap = gap * 3 + 1;
     }
-    printf("%d\n", gap);
     int i, k, temp;
     while (gap > 0)
     {
-        printf("------------\n");
         for (i = gap; i < cnt; i++)
         {
-            printf("============\n");
             temp = arr[i];
             k = i - gap;
             while ((k >= 0) && (arr[k] > temp))
