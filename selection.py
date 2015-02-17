@@ -10,21 +10,22 @@ def prepare():
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-# swap avg O(N^2) best O(0) worst O(N^2)
-# compare avg O(N^2) best O(N) worst O(N^2)
-def insertion_sort(arr):
+# swap O(N)
+# compare avg O(N^2) best O(N^2) worst O(N^2)    N*(N-1)/2 ~ N^2/2
+def selection_sort(arr):
     length = len(arr)
-    for i in range(1, length):
-        for j in range(i, 0, -1):
-            if arr[j] < arr[j - 1]:
-                swap(arr, j - 1, j)
-            else:
-                break
+    for i in range(length - 1):
+        min = i
+        for j in range(i + 1, length):
+            if arr[j] < arr[min]:
+                min = j
+        if i != min:
+            swap(arr, i, min)
 
 def main():
     arr = prepare()
     print arr
-    insertion_sort(arr)
+    selection_sort(arr)
     print arr
 
 if __name__ == '__main__':
