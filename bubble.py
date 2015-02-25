@@ -10,21 +10,19 @@ def prepare():
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-# swap O(N)
-# compare avg O(N^2) best O(N^2) worst O(N^2)    N*(N-1)/2 ~ N^2/2
-def selection_sort(arr):
+# swap O(N^2)
+# compare O(N^2)
+def bubble_sort(arr):
     length = len(arr)
-    for i in range(length - 1):
-        min = i
-        for j in range(i + 1, length):
-            if arr[j] < arr[min]:
-                min = j
-        swap(arr, i, min)
+    for i in range(length):
+        for j in range(0, length - i - 1):
+            if arr[j] > arr[j + 1]:
+                swap(arr, j, j + 1)
 
 def main():
     arr = prepare()
     print arr
-    selection_sort(arr)
+    bubble_sort(arr)
     print arr
 
 if __name__ == '__main__':
