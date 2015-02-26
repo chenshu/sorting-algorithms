@@ -10,8 +10,8 @@ def prepare():
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-# swap avg O(N^2) best O(0) worst O(N^2)
 # compare avg O(N^2) best O(N) worst O(N^2)
+# swap avg O(N^2) best O(0) worst O(N^2)
 def insertion_sort(arr):
     length = len(arr)
     for i in range(1, length):
