@@ -5,7 +5,7 @@ from random import randint
 import copy
 
 def prepare():
-    cnt = 16
+    cnt = 10
     return [randint(0, cnt) for _ in range(cnt)]
 
 # compare O(NlgN)
