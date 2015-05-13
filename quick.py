@@ -12,31 +12,55 @@ def swap(arr, i, j):
 
 def quick_sort(arr):
     length = len(arr)
-    sort(arr, 0, length - 1)
+    #sort(arr, 0, length - 1)
+    sort_3_way(arr, 0, length - 1)
 
 def sort(arr, lo, hi):
     if lo >= hi:
         return
-    m = partition(arr, lo, hi)
-    sort(arr, lo, m - 1)
-    sort(arr, m + 1, hi)
+    p = partition(arr, lo, hi)
+    sort(arr, lo, p - 1)
+    sort(arr, p + 1, hi)
 
 def partition(arr, lo, hi):
-    v = arr[lo]
-    i, j = lo, hi + 1
-    while i < j:
-        while i < hi:
+    v = lo
+    i = lo + 1
+    j = hi
+    while True:
+        while arr[i] <= arr[v]:
+            if i >= hi:
+                break
             i += 1
-            if arr[i] > v:
+        while arr[j] >= arr[v]:
+            if j <= lo:
                 break
-        while j > lo:
             j -= 1
-            if arr[j] < v:
-                break
-        if i < j:
-            swap(arr, i, j)
-    swap(arr, j, lo)
+        if i >= j:
+            break
+        swap(arr, i, j)
+    swap(arr, lo, j)
     return j
+
+def sort_3_way(arr, lo, hi):
+    if lo >= hi:
+        return
+    lt = lo
+    gt = hi
+    i = lt + 1
+    v = arr[lo]
+    while i <= gt:
+        c = arr[i] - v
+        if c < 0:
+            swap(arr, i, lt)
+            i += 1
+            lt += 1
+        elif c > 0:
+            swap(arr, i, gt)
+            gt -= 1
+        else:
+            i += 1
+    sort_3_way(arr, lo, lt - 1)
+    sort_3_way(arr, gt + 1, hi)
 
 def main():
     arr = prepare()
